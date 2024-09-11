@@ -1,6 +1,6 @@
 from dataclasses import field
 from django.contrib import admin
-from core.models import Counterparts, Resume,contrgrupp,licenss,Priv
+from core.models import Counterparts, Resume,contrgrupp,licenss,Priv,mg
 
 from import_export.admin import ImportExportModelAdmin
 from import_export import resources,fields
@@ -43,15 +43,6 @@ class PrivAdmin(admin.ModelAdmin):
    
     list_display = ["grup","us"]
 
-# @admin.register(licenss)
-# class licenssAdmin(admin.ModelAdmin):
-    
-#     list_display = ["contragent","data_po","create_at","guid",]
-
-#     def create_time_display(self, obj):
-#         return obj.create_time.strftime("%B %d, %Y")
-
-#     create_time_display.data_po = 'дата по'
 
 class licenssResource(resources.ModelResource):
     
@@ -71,4 +62,17 @@ class licenssAdmin(ImportExportModelAdmin):
 
 admin.site.register(licenss,licenssAdmin)
 admin.site.register(Resume)
+
+class mgAdmin(ImportExportModelAdmin):
+    resource_classe=mgResource
+    list_display = [
+        "okpo","mg","create_at","contragent",
+     
+    ]
+    
+    search_fields = ["contragent"]
+    
+
+admin.site.register(mg,mgAdmin)
+
   
