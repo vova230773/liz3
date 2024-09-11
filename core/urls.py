@@ -16,7 +16,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include, re_path
-from core.api import LizPOST, LizViewSet,LizViewSet2
+from core.api import LizPOST, LizViewSet,LizViewSet2,mgPOST
       
 from django.urls import path
 from core import views
@@ -28,6 +28,7 @@ from core.serializers import LizSerializer
 app_name = 'core'
 router = DefaultRouter()
 router.register(r'liz',LizPOST)
+router.register(r'mg',mgPOST)
 
 urlpatterns = [
     path('', views.Main.as_view(), name='main'),

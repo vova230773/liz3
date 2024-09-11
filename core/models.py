@@ -71,6 +71,17 @@ class licenss(models.Model):
         verbose_name = 'Ліцензія'
         verbose_name_plural = 'Ліцензії'
 
+class mg(models.Model):
+    mg = models.CharField(max_length=500,unique=True, verbose_name='mg')
+    create_at = models.DateTimeField(blank=True,auto_now_add=True, verbose_name='Дата створення')
+    okpo=models.CharField(max_length=10, verbose_name='okpo')
+    contragent = models.CharField(max_length=500, verbose_name='назва контрагента')
+
+    class Meta:
+        db_table = 'mg'
+        verbose_name = 'mg'
+        verbose_name_plural = 'mg'
+
 class Resume(models.Model):
     
     name = models.CharField(max_length= 255, blank=False, null=False)

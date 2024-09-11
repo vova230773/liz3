@@ -62,7 +62,10 @@ class licenssAdmin(ImportExportModelAdmin):
 
 admin.site.register(licenss,licenssAdmin)
 admin.site.register(Resume)
-
+class mgResource(resources.ModelResource):
+    class Meta:
+         model=mg
+    
 class mgAdmin(ImportExportModelAdmin):
     resource_classe=mgResource
     list_display = [
