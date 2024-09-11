@@ -1,0 +1,132 @@
+<nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
+    <div class="position-sticky pt-3">
+        <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+            <span>Мої підприємства</span>
+        </h6>
+        <ul class="nav flex-column mb-2">
+            <li class="nav-item ">
+                {% url 'core:main' as core_main_page %}
+                <a class="nav-link {% if request.path == core_main_page %}active{% endif %}" 
+                href="{{core_main_page}}"
+                hx-get="{{core_main_page}}"
+                hx-target="#main-content"
+                hx-push-url="true"
+                hx-indicator = "#content-loader"
+                hx-on="htmx:beforeRequest: event.detail.target.innerHTML = ''"
+                hx-custom='title'
+                >
+                    <span data-feather="file-text"></span>
+                    Всі компанії
+                </a>
+            </li>
+            <li class="nav-item">
+                {% url 'core:files' as files_page %}
+                <a class="nav-link {% if request.path == files_page %}active{% endif %}" 
+                href="{{files_page}}"
+                hx-get="{{files_page}}"
+                hx-target="#main-content"
+                hx-push-url="true"
+                hx-indicator = "#content-loader"
+                hx-on="htmx:beforeRequest: event.detail.target.innerHTML = ''"
+                hx-custom='title'
+                >
+                    <span data-feather="file-text"></span>
+                    files
+                    <span data-feather="plus-circle"></span>
+                </a>
+            </li> 
+            <li class="nav-item">
+                {% url 'core:vvid' as vvidd %}
+                <a class="nav-link {% if request.path == vvidd %}active{% endif %}" 
+                href="{{vvidd}}"
+                hx-get="{{vvidd}}"
+                hx-target="#main-content"
+                hx-push-url="true"
+                hx-indicator = "#content-loader"
+                hx-on="htmx:beforeRequest: event.detail.target.innerHTML = ''"
+                hx-custom='title'
+                >
+                    <span data-feather="file-text"></span>
+                    Ввід коду доступу
+                    <span data-feather="plus-circle"></span>
+                </a>
+            </li>
+            
+        </ul>
+        <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+            <span>Менеджери</span>
+        </h6>
+        <ul class="nav flex-column mb-2">
+            <li class="nav-item">
+                {% url 'core:users' as users_page %}
+                <a class="nav-link {% if request.path == users_page %}active{% endif %}" 
+                href="{{users_page}}"
+                hx-get="{{users_page}}"
+                hx-target="#main-content"
+                hx-push-url="true"
+                hx-indicator = "#content-loader"
+                hx-on="htmx:beforeRequest: event.detail.target.innerHTML = ''"
+                hx-custom='title'
+                >
+                    <span data-feather="users"></span>
+                    Всі менеджери
+                </a>
+            </li>
+            {% comment %} <li class="nav-item">
+                {% url 'core:create_user' as create_user_page %}
+                <a class="nav-link {% if request.path == create_user_page %}active{% endif %}" 
+                href="{{create_user_page}}"
+                hx-get="{{create_user_page}}"
+                hx-target="#main-content"
+                hx-push-url="true"
+                hx-indicator = "#content-loader"
+                hx-on="htmx:beforeRequest: event.detail.target.innerHTML = ''"
+                hx-custom='title'
+                >
+                    <span data-feather="users"></span>
+                    Додати
+                    <span data-feather="plus-circle"></span>
+                </a>
+            </li> {% endcomment %}
+
+        </ul>
+
+       
+
+        <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+            <span>Аналітика</span>
+        </h6>
+        <ul class="nav flex-column mb-2">
+            <li class="nav-item">
+                <a class="nav-link" href="#">
+                    <span data-feather="layers"></span>
+                    Звіт 1
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">
+                    <span data-feather="layers"></span>
+                    Звіт 2
+                </a>
+            </li>
+        </ul>
+        
+        <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+            <span>Настройки</span>
+        </h6>
+        <ul class="nav flex-column mb-2">
+            <li class="nav-item">
+                <a class="nav-link" href="#">
+                    <span data-feather="layers"></span>
+                    Настройка 1
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">
+                    <span data-feather="layers"></span>
+                    Настройка 2
+                </a>
+            </li>
+        </ul>
+    </div>
+</nav>
