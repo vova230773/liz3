@@ -22,10 +22,10 @@ class mgSerializer(serializers.ModelSerializer):
         model = mg
         fields = '__all__'
 
-    def create(self, validated_data):
-        mg = mg.objects.create(**validated_data)
-        return mg
+    # def create(self, validated_data):
+    #     mg = mg.objects.create(**validated_data)
+    #     return mg
     
-    def update(self,instance, validated_data):
-        mg = super().update(instance, validated_data)
-        return mg        
+    # def update(self,instance, validated_data):
+    #     mg = super().update(instance, validated_data)
+    #     return mg        
