@@ -175,20 +175,19 @@ class upload_resume(CustomHtmxMixin, TemplateView):
         else:
             return HttpResponse(form.errors.values())
 
-def offer(request):
-    
-    return render(request,
-        'poc_Ellada.html',
-        context={},
-    )
+class zakaz(CustomHtmxMixin, TemplateView):
+    template_name = "zakaz.html"
 
-def offer2(request):
+    def get_context_data(self, **kwargs):
+        kwargs["title"] = "замовлення на роботу"
+        
+        return super().get_context_data(**kwargs)
     
-    return render(request,
-        'poc_Koval.html',
-        context={},
-    )    
-    
+    def post(self, request, *args, **kwargs):
+        
+        return HttpResponseRedirect(reverse('core:main'))
+
+
 
 
 

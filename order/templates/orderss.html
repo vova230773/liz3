@@ -1,0 +1,128 @@
+{% load static %}
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static '/css/bootstrap/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static '/css/my_css.css' %}">
+    <link rel="apple-touch-icon" sizes="180x180" href="{% static '/icons/google.png' %}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{% static '/icons/favicon-32x32.png' %}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{% static '/icons/favicon-16x16.png' %}">
+    <link rel="manifest" href="{% static '/favicon/site.webmanifest' %}">
+    <title>Замовлення роботи</title>
+</head>
+
+<body>
+    
+    <section>
+        
+        <!-- Контент -->
+        <div class="container">
+            <div class="row mt-1">
+                <div class="col-lg-2">
+                    <!-- Пустой блок на усмотрение -->
+                </div>
+                <div class="col-lg-10">
+                    <!-- Контент на странице -->
+                    <div class="row">
+                        <div class="container mt-5">
+                            <div class="row">
+                                
+                                <!-- Профиль с данными пользователя -->
+            <div class="col-md-10">
+                <div class=" bg-white p-4 mb-4 mx-2 rounded custom-shadow">
+                    <h3 class="text-center mb-4">Замовлення послуг</h3>
+                    <form action="{% url "order:orders" %}" method="post" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <div class="row">
+                           
+                            <div class="col-md-12 mb-3">
+                                <label for="id_first_name" class="form-label">Опис завдання</label>
+                                <textarea type="text" style="padding-bottom:150px ;
+                                font-size:20px;
+                                height: 300px;
+                                width: 800px;"
+                                    class="form-control" id="job_description"
+                                    name="job_description"
+                                    placeholder="Опис завдання який необхідно виконати"
+                                    value="{{ form.job_description.value }}"
+                                    required>
+                                   {% if form.job_description.errors %}
+                                    <div class="alert alert-danger alert-dismissible fade show">{{form.job_description.errors}}</div>
+                                    {% endif %} 
+                                </textarea> 
+                            </div>
+                            <div class="col-md-12 mb-3 text-center">
+                                {% if form.file %}
+                                    <img src="{{ form.file.url }}"
+                                        alt="Додатковий файл" class="img-fluid rounded-circle"
+                                        style="max-width: 150px;">
+                                {% else %}
+                                    <img src="{% static "deps/images/baseavatar.jpg" %}"
+                                        alt="Додатковий файл" class="img-fluid rounded-circle"
+                                        style="max-width: 150px;">
+                                {% endif %}
+                                <input type="file" class="form-control mt-3" id="id_image"
+                                    name='image'
+                                    accept="image/*">
+                                    {% if form.file.errors %}
+                                    <div class="alert alert-danger alert-dismissible fade show">{{form.file.errors}}</div>
+                                    {% endif %}
+                            </div>
+                            <div class="col-md-12 mb-3">
+                                <label for="id_last_name" class="form-label">Висновок виконавця</label>
+                                <input type="text" class="form-control" id="id_last_name"
+                                    name="last_name"
+                                    placeholder="Висновок виконавця"
+                                    value="{{ form.conclusion.value }}"
+                                    required>
+                                    {% if form.conclusion.errors %}
+                                    <div class="alert alert-danger alert-dismissible fade show">{{form.conclusion.errors}}</div>
+                                    {% endif %}
+                            </div>
+                            {% comment %} <div class="col-md-12 mb-3">
+                                <label for="id_username" class="form-label">Ім'я користувача*</label>
+                                <input type="text" class="form-control" id="id_username"
+                                    name="username"
+                                    placeholder="Введіть ваше ім'я користувача"
+                                    value="{{ form.job_description.value }}"
+                                    required>
+                                    {% if form.job_description.errors %}
+                                    <div class="alert alert-danger alert-dismissible fade show">{{form.username.errors}}</div>
+                                    {% endif %}
+                            </div>
+                            <div class="col-md-12 mb-3">
+                                <label for="id_email" class="form-label">Email*</label>
+                                <input type="email" class="form-control" id="id_email"
+                                    name="email"
+                                    placeholder="Введіть ваш email *youremail@example.com"
+                                    value="{{ form.job_description.value }}"
+                                    required>
+                                    {% if form.job_description.errors %}
+                                    <div class="alert alert-danger alert-dismissible fade show">{{form.email.errors}}</div>
+                                    {% endif %}
+                            </div> {% endcomment %}
+
+                           
+                        </div>
+                        <button type="submit" class="btn btn-dark">Зберегти</button>
+                    </form>
+                </div>
+            </div>
+                              
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <script src="{% static '/js/jquery/jquery-3.7.0.min.js' %}"></script>
+    <script src="{% static "/js/jquery-events.js" %}"></script>
+    <script src="{% static '/js/jquery-ajax.js' %}"></script>
+    <script src="{% static '/js/bootstrap/bootstrap.bundle.min.js' %}"></script>
+</body>
+
+</html>
