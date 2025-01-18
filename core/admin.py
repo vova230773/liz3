@@ -1,6 +1,6 @@
 from dataclasses import field
 from django.contrib import admin
-from core.models import Counterparts, Resume,contrgrupp,licenss,Priv,mg
+from core.models import Counterparts, News, Resume,contrgrupp,licenss,Priv,mg
 
 from import_export.admin import ImportExportModelAdmin
 from import_export import resources,fields
@@ -26,13 +26,11 @@ class CounterpartsAdmin(ImportExportModelAdmin):
         'slug':('name',)}
     # list_display=[field.name for field in Counterparts._meta.fields if field.name !='id']
     search_fields = ["name", "okpo_cod"]
-    
+
 
 admin.site.register(Counterparts,CounterpartsAdmin)
 
 
-
-    
 @admin.register(contrgrupp)
 class CategoriesAdmin(admin.ModelAdmin):
     prepopulated_fields = {"slug": ("name",)}
@@ -58,24 +56,33 @@ class licenssAdmin(ImportExportModelAdmin):
     ]
     
     search_fields = ["okpo", "data_po","contragent"]
-    
+
 
 admin.site.register(licenss,licenssAdmin)
 admin.site.register(Resume)
 class mgResource(resources.ModelResource):
     class Meta:
          model=mg
-    
+
 class mgAdmin(ImportExportModelAdmin):
     resource_classe=mgResource
-    list_display = [
-        "okpo","mg","create_at","contragent",
-     
-    ]
-    
+    list_display = ["okpo", "mg", "create_at", "contragent", "ip_address"]
+
     search_fields = ["contragent"]
-    
+
 
 admin.site.register(mg,mgAdmin)
 
-  
+
+class NewsResource(resources.ModelResource):
+    class Meta:
+        model = News
+
+
+class NewsAdmin(admin.ModelAdmin):
+    resource_classe = NewsResource
+    list_display = ["title", "image", "file", "slug", "created_at"]
+    search_fields = ["content"]
+    prepopulated_fields = {"slug": ("title",)}
+
+admin.site.register(News, NewsAdmin)

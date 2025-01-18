@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ news_item.title }}</title>
+</head>
+<body>
+    <h1>{{ news_item.title }}</h1>
+    <img src="{{ news_item.image.url }}" alt="{{ news_item.title }}" width="300">
+    <p id="content">{{ news_item.content }}</p>
+    {% if news_item.file %}
+        <a href="{{ news_item.file.url }}" download>Download file</a>
+    {% endif %}
+    <a href="{% url 'core:news_list' %}">Back to News</a>
+<script>
+    const content = document.getElementById('content');
+    content.innerHTML = content.innerHTML.replace(
+        /(\bhttps?:\/\/[^\s]+)/g,
+        '<a href="$1" target="_blank" rel="noopener noreferrer">$1</a>'
+    );
+</script>
+    
+</body>
+</html>

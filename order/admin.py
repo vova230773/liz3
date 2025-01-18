@@ -6,7 +6,6 @@ from import_export import resources,fields
 from import_export.widgets import ForeignKeyWidget
 
 
-
 class orderResource(resources.ModelResource):
     
     class Meta:
@@ -16,10 +15,12 @@ class orderResource(resources.ModelResource):
 class orderAdmin(ImportExportModelAdmin):
     resource_classe=orderResource
     list_display = [
-        "okpo","status","create_at","job_description","contragent","conclusion","file","price","created_timestamp","guid","suma"
+        "document_type","okpo","status","job_description","contragent","conclusion","file_str","price","created_timestamp","guid","suma"
      
     ]
     
     search_fields = ["okpo","status","job_description","contragent","conclusion"]
 
 admin.site.register(Order,orderAdmin)    
+
+

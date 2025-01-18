@@ -37,6 +37,7 @@ class UserRegistrationForm(UserCreationForm):
             "last_name",
             "username",
             "email",
+            "inn",
             "password1",
             "password2",
         )
@@ -44,6 +45,7 @@ class UserRegistrationForm(UserCreationForm):
     first_name = forms.CharField()
     last_name = forms.CharField()
     username = forms.CharField()
+    inn=forms.CharField()
     email = forms.CharField()
     password1 = forms.CharField()
     password2 = forms.CharField()
@@ -106,6 +108,7 @@ class ProfileForm(UserChangeForm):
             "first_name",
             "last_name",
             "username",
+            "inn",
             "email",)
 
     image = forms.ImageField(required=False)
@@ -113,6 +116,7 @@ class ProfileForm(UserChangeForm):
     last_name = forms.CharField()
     username = forms.CharField()
     email = forms.CharField()
+    inn=forms.CharField()
 
 
 

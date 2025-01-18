@@ -1,10 +1,11 @@
 from enum import unique
 from django.db import models
 from django.forms import CharField, SlugField
+from django.utils.timezone import now
 
 from users.models import User
-
-
+from django.db import models
+from django.utils.text import slugify
 
 class contrgrupp(models.Model):
     name = models.CharField(max_length=50)
@@ -20,7 +21,7 @@ class contrgrupp(models.Model):
     def __str__(self):
         return self.name
 
-  
+
 class Priv(models.Model):
     grup=models.ForeignKey(contrgrupp, on_delete=models.CASCADE, verbose_name='Група')
     us=models.ForeignKey(User, on_delete=models.CASCADE, verbose_name='Група')
@@ -76,6 +77,7 @@ class mg(models.Model):
     create_at = models.DateTimeField(blank=True,auto_now_add=True, verbose_name='Дата створення')
     okpo=models.CharField(max_length=10, verbose_name='okpo')
     contragent = models.CharField(max_length=500, verbose_name='назва контрагента')
+    ip_address = models.GenericIPAddressField(null=True, blank=True)
 
     class Meta:
         db_table = 'mg'
@@ -101,11 +103,21 @@ class Resume(models.Model):
         
       except: pass
       super(Resume, self).save(*args, **kwargs)
-        
+
+
+class News(models.Model):
+    title = models.CharField(max_length=255)
+    slug = models.SlugField(unique=True, blank=True)
+    content = models.TextField()
+    image = models.ImageField(upload_to="news_images/")
+    file = models.FileField(upload_to="news_files/", null=True, blank=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+
+   
+
+    def __str__(self):
+        return self.title
+
 
 
     
-    
-    
-
-

@@ -1,23 +1,15 @@
+{% extends "base2.html" %}
 {% load static %}
-<html lang="en">
+{% block css %}
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{% static '/css/bootstrap/bootstrap.min.css' %}">
-    <link rel="stylesheet" href="{% static '/css/my_css.css' %}">
-    <link rel="apple-touch-icon" sizes="180x180" href="{% static '/favicon/apple-touch-icon.png' %}">
-    <link rel="icon" type="image/png" sizes="32x32" href="{% static '/favicon/favicon-32x32.png' %}">
-    <link rel="icon" type="image/png" sizes="16x16" href="{% static '/favicon/favicon-16x16.png' %}">
-    <link rel="manifest" href="{% static '/favicon/site.webmanifest' %}">
-    <title>Регистрация</title>
-</head>
+
+<link rel="stylesheet" href="{% static 'css/pass2.css'%}">
+{% endblock css %}
 
 <body>
-   
+ {% block content %}
     <section>
-       
+
         </div>
         <!-- Контент -->
         <div class="container">
@@ -39,65 +31,109 @@
                                                 <label for="id_first_name" class="form-label">Ім'я*</label>
                                                 <input type="text" class="form-control" id="id_first_name"
                                                     value="{% if form.first_name.value %}{{ form.first_name.value }}{% endif %}"
-                                                    name="first_name"
-                                                    placeholder="Введіть ваше ім'я" required>
-                                                    {% if form.first_name.errors %}
-                                                    <div class="alert alert-danger alert-dismissible fade show">{{form.first_name.errors}}</div>
-                                                    {% endif %}
+                                                    name="first_name" placeholder="Введіть ваше ім'я" required>
+                                                {% if form.first_name.errors %}
+                                                <div class="alert alert-danger alert-dismissible fade show">
+                                                    {{form.first_name.errors}}</div>
+                                                {% endif %}
                                             </div>
                                             <div class="col-md-6 mb-3">
                                                 <label for="id_last_name" class="form-label">Фамілія*</label>
                                                 <input type="text" class="form-control" id="id_last_name"
                                                     value="{% if form.last_name.value %}{{ form.last_name.value }}{% endif %}"
-                                                    name="last_name"
-                                                    placeholder="Введіть вашу фамілію" required>
-                                                    {% if form.last_name.errors %}
-                                                    <div class="alert alert-danger alert-dismissible fade show">{{form.last_name.errors}}</div>
-                                                    {% endif %}
+                                                    name="last_name" placeholder="Введіть вашу фамілію" required>
+                                                {% if form.last_name.errors %}
+                                                <div class="alert alert-danger alert-dismissible fade show">
+                                                    {{form.last_name.errors}}</div>
+                                                {% endif %}
                                             </div>
                                             <div class="col-md-6 mb-3">
                                                 <label for="id_username" class="form-label">Ім'я користувача*</label>
                                                 <input type="text" class="form-control" id="id_username"
                                                     value="{% if form.username.value %}{{ form.username.value }}{% endif %}"
-                                                    name="username"
-                                                    placeholder="Введіь ваше ім'я користувача" required>
-                                                    {% if form.username.errors %}
-                                                    <div class="alert alert-danger alert-dismissible fade show">{{form.username.errors}}</div>
-                                                    {% endif %}
+                                                    name="username" placeholder="Введіь ваше ім'я користувача" required>
+                                                {% if form.username.errors %}
+                                                <div class="alert alert-danger alert-dismissible fade show">
+                                                    {{form.username.errors}}</div>
+                                                {% endif %}
                                             </div>
                                             <div class="col-md-6 mb-3">
                                                 <label for="id_email" class="form-label">Email*</label>
                                                 <input type="email" class="form-control" id="id_email"
                                                     value="{% if form.email.value %}{{ form.email.value }}{% endif %}"
-                                                    name="email"
-                                                    placeholder="Введіть ваш email" required>
-                                                    {% if form.email.errors %}
-                                                    <div class="alert alert-danger alert-dismissible fade show">{{form.email.errors}}</div>
-                                                    {% endif %}
+                                                    name="email" placeholder="Введіть ваш email" required>
+                                                {% if form.email.errors %}
+                                                <div class="alert alert-danger alert-dismissible fade show">
+                                                    {{form.email.errors}}</div>
+                                                {% endif %}
+                                            </div>
+                                            <div class="col-md-6 mb-3">
+                                                <label for="inn" class="form-label">Ідентифікаційний код*</label>
+                                                <input type="text" class="form-control" id="inn"
+                                                    value="{% if form.inn.value %}{{ form.inn.value }}{% endif %}"
+                                                    name="inn" placeholder="Ідентифікаційний код" required>
+                                                {% if form.inn.errors %}
+                                                <div class="alert alert-danger alert-dismissible fade show">
+                                                    {{form.inn.errors}}</div>
+                                                {% endif %}
+
                                             </div>
                                             <div class="col-md-6 mb-3">
                                                 <label for="id_password1" class="form-label">Пароль*</label>
-                                                <input type="password" class="form-control" id="id_password1"
-                                                    value="{% if form.password1.value %}{{ form.password1.value }}{% endif %}"
-                                                    name="password1"
-                                                    placeholder="Введіть пароль" required>
-                                                    {% if form.password1.errors %}
-                                                    <div class="alert alert-danger alert-dismissible fade show">{{form.password1.errors}}</div>
-                                                    {% endif %}
-                                            </div>
-                                            <div class="col-md-6 mb-3">
-                                                <label for="id_password2" class="form-label">Підтвердження паролю*</label>
-                                                <input type="password" class="form-control" id="id_password2"
-                                                    value="{% if form.password2.value %}{{ form.password2.value }}{% endif %}"
-                                                    name="password2"
-                                                    placeholder="Підтвердіть пароль" required>
+                                                <div class="row">
+
+                                                    <div class="mb-3">
+                                                        <div class="pass ">
+                                                            <span class="icon-pass" id="icon-pass">&#128065;</span>
+
+                                                            <!-- <input type="password" class="form-control" name="password"
+                                                                id="id_password" autocomplete="current-password"
+                                                                placeholder="Введіть ваш пароль" required> -->
+                                                            <input type="password" class="form-control"
+                                                                id="id_password1"
+                                                                value="{% if form.password1.value %}{{ form.password1.value }}{% endif %}"
+                                                                name="password1" placeholder="Введіть пароль" required>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                
+                                                {% if form.password1.errors %}
+                                                <div class="alert alert-danger alert-dismissible fade show">
+                                                    {{form.password1.errors}}</div>
+                                                {% endif %}
+                                                <div class="col-md-12 mb-3">
+                                                    <label for="id_password2" class="form-label">Підтвердження
+                                                        паролю*</label>
+
+                                                     <div class="row">
+
+                                                         <div class="mb-3">
+                                                             <div class="pass ">
+                                                                 <span class="icon-pass" id="icon-pass2">&#128065;</span>
+
+                                                                 <!-- <input type="password" class="form-control" name="password"
+                                                                id="id_password" autocomplete="current-password"
+                                                                placeholder="Введіть ваш пароль" required> -->
+                                                                 <input type="password" class="form-control"
+                                                                     id="id_password2"
+                                                                     value="{% if form.password2.value %}{{ form.password2.value }}{% endif %}"
+                                                                     name="password2" placeholder="Підтвердіть пароль"
+                                                                     required>
+                                                             </div>
+                                                         </div>
+                                                     </div>
+                                                     
+                                                   
                                                     {% if form.password2.errors %}
-                                                    <div class="alert alert-danger alert-dismissible fade show">{{form.password2.errors}}</div>
+                                                    <div class="alert alert-danger alert-dismissible fade show">
+                                                        {{form.password2.errors}}</div>
                                                     {% endif %}
+                                                </div>
                                             </div>
+                                            
                                         </div>
-                                        <button type="submit"
-                                            class="btn btn-dark btn-block">Зареєструватись</button>
+                                        <button type="submit" class="btn btn-dark btn-block">Зареєструватись</button>
                                     </form>
                                 </div>
                             </div>
@@ -107,9 +143,7 @@
             </div>
         </div>
     </section>
-    <script src="{% static '/js/jquery/jquery-3.7.0.min.js' %}"></script>
-    <script src="{% static '/js/jquery-events.js' %}"></script>
-    <script src="{% static '/js/jquery-ajax.js' %}"></script>
+      {% endblock content %}
     <script src="{% static '/js/bootstrap/bootstrap.bundle.min.js' %}"></script>
 </body>
 

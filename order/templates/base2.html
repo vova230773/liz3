@@ -1,0 +1,138 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ІТ ПОСЛУГИ</title>
+    <link rel="icon" href="{% static "images\it_home_macos_bigsur_icon_190082.png"%}" type="image/x-icon" />
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+     <link rel="stylesheet" href="{% static 'css\mycss3.css'%}">
+
+    
+    {% block css %}{% endblock css %}
+</head>
+
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg bg-light">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="{% url 'order:orders' %}"><img
+                        src="{% static "favicon\logo.png" %}" alt=""></a>
+                        
+                <!-- <a class="navbar-brand" href="index.html">Головна сторінка</a> -->
+                <button class="navbar-toggler " type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                    <ul class="navbar-nav">
+
+                        <li class="nav-item">
+                            <a class="nav-link mx-3" href="{% url 'user:services' %}">НАШІ ПОСЛУГИ</a>
+                        </li>
+
+                         <li class="nav-item dropdown">
+                             <a class="nav-link dropdown-toggle mx-3" href="#" role="button" data-bs-toggle="dropdown"
+                                 aria-expanded="false">
+                                 МЕНЮ
+                             </a>
+                             <ul class="dropdown-menu">
+                                 <li><a class="dropdown-item" href="{% url 'order:podkal' %}">Податковий календар</a>
+                                 </li>
+                                 <li><a class="dropdown-item" href="{% url 'core:news_list' %}" >Останні
+                                         новини</a></li>
+                                 <li>
+                                     <hr class="dropdown-divider">
+                                 </li>
+                                 <li><a class="dropdown-item" href="#">Наші послуги</a></li>
+                             </ul>
+                         </li>
+                        
+                    </ul>
+                </div>
+
+               {% if user.is_authenticated %}
+               
+               <a class="nav-link mx-3" btn-block" href="{% url 'users:profile' %}">{{ user }}</a>
+                       <a class="btn btn-dark mx-3" btn-block" href="/logout">Вихід</a>
+
+           
+               {% else %}
+                   <a class="btn btn-dark mx-3" btn-block" href="{% url 'users:login' %}">ВХІД</a>
+               {% endif%}
+            
+                <a class="vib mx-3" href="viber://chat?number=+380684752264"><img
+                        src="{% static 'images\social_viber_chat_icon_131211.png' %}" alt="12"></a>
+            </div>
+            <ul class="navbar-nav px-1 ">
+                <li class="nav-item text-nowrap">
+
+                    {% include "notifications2.html" %}
+                </li>
+            </ul>
+        </nav>
+        
+    </header>
+   
+    <section>
+        
+        {% block content %}{% endblock content %}
+        
+    </section>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
+    </script>
+
+     <script>
+         const inputPass = document.getElementById('id_password');
+         const iconPass = document.getElementById('icon-pass');
+         const inputPass1 = document.getElementById('id_password1');
+         const inputPass2 = document.getElementById('id_password2');
+         const iconPass1 = document.getElementById('icon-pass1');
+         const iconPass2 = document.getElementById('icon-pass2');
+
+         iconPass.addEventListener('click', () => {
+             if (inputPass.getAttribute('type') === 'password') {
+                 inputPass.setAttribute('type', 'text');
+             } else {
+                 inputPass.setAttribute('type', 'password');
+             }
+         });
+
+         iconPass.addEventListener('click', () => {
+         if (inputPass1.getAttribute('type') === 'password') {
+         inputPass1.setAttribute('type', 'text');
+         } else {
+         inputPass1.setAttribute('type', 'password');
+         }
+         });
+
+         iconPass2.addEventListener('click', () => {
+         if (inputPass2.getAttribute('type') === 'password') {
+         inputPass2.setAttribute('type', 'text');
+         } else {
+         inputPass2.setAttribute('type', 'password');
+         }
+         });
+     </script>
+
+    <script>
+        const content = document.getElementById('content');
+        content.innerHTML = content.innerHTML.replace(
+            /(\bhttps?:\/\/[^\s]+)/g,
+            '<a href="$1" target="_blank" rel="noopener noreferrer">$1</a>'
+        );
+    </script>
+     
+    <script src="{% static "js/jquery/jquery-3.7.0.min.js" %}"></script>
+    <script src="{% static "js/jquery-ajax.js" %}"></script>
+</body>
+
+</html>
+

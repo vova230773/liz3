@@ -1,0 +1,99 @@
+@import url("https://fonts.googleapis.com/css?family=Michroma&display=swap");
+
+body{
+    font-family: sans-serif;
+    background: linear-gradient(90deg, #e3edf5 0%, #ffffff 100%); */ */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #f4f4f4;
+  
+}
+
+
+.nav-link {
+
+color: rgb(2, 32, 120);    
+}
+
+.navbar-nav .nav-link.active{
+
+    color: rgb(2, 32, 120);
+}
+
+.navbar-brand img{
+    width: 120px;
+}
+
+.header{
+  min-height: 700px;
+}
+
+
+
+.pravoruch{
+ background: linear-gradient(180deg, #dfebf3 0%, #ffffff 100%); */ */
+ background-image: url("static\images\background.jpg"); 
+}
+
+.cena {
+  color: crimson;
+}
+
+.s5 {
+
+            width: 450px; 
+            overflow: hidden; 
+            display: -webkit-box; 
+            -webkit-line-clamp: 3; 
+            -webkit-box-orient: vertical; 
+           
+            white-space: normal; }
+
+.s4 {
+
+   text-decoration: none
+   display: inline-block;
+   padding: 5px 10px;
+   letter-spacing: 1px;
+   margin: 0 20px;
+   font-size: 16px;
+   color: rgb(2, 32, 120);
+   position: relative;
+   font-weight: bold;
+}
+
+.s4::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -3px; /* Расстояние от текста */
+    width: 0;
+    height: 3px; /* Толщина подчеркивания */
+    background-color:  rgb(2, 32, 120); /* Цвет подчеркивания */
+    transition: width 0.5s ease;
+    max-width: 150px;
+}
+
+.s4:hover::after {
+    width: 100%; 
+}
+
+.s4:active {
+      color: rgb(192, 226, 172); 
+    }
+
+.s4:hover{
+    
+    background-color:  rgb(203, 232, 178); 
+}    
+
+.s4{
+   text-decoration: none
+   
+}
+
+
+

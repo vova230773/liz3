@@ -6,24 +6,20 @@ from django.contrib.auth import views as auth_views
 from django.contrib.auth import logout
 
 
-
 app_name = 'users'
 
 urlpatterns = [
-    path('', views.login, name='login'),
-    path('registration/', views.registration, name='registration'),
-    path('profile/', views.profile, name='profile'),
-    path('main/', Main.as_view(), name='main'),
-    path('core/', include('core.urls',namespace='core')),
-    path('login/', views.login, name='login'),
-    path('logout/', views.logout, name='logout'),
-  
-    
-    
-#    # restore password urls
+    path("", views.login, name="login"),
+    path("registration/", views.registration, name="registration"),
+    path("profile/", views.profile, name="profile"),
+    path("main/", Main.as_view(), name="main"),
+    path("core/", include("core.urls", namespace="core")),
+    path("login/", views.login, name="login"),
+    path("logout/", views.logout, name="logout"),
+    path("services/", views.sepvices, name="services"),
+    #    # restore password urls
     # path('password-reset/', include('django.contrib.auth.views.password_reset', name='password_reset')),
-#  path('password-reset/done/$', 'django.contrib.auth.views.password_reset_done', name='password_reset_done'),
-#  path('password-reset/confirm/(?P<uidb64>[-\w]+)/(?P<token>[-\w]+)/$', 'django.contrib.auth.views.password_reset_confirm', name='password_reset_confirm'),
-#  path('password-reset/complete/$', 'django.contrib.auth.views.password_reset_complete', name='password_reset_complete'), 
+    #  path('password-reset/done/$', 'django.contrib.auth.views.password_reset_done', name='password_reset_done'),
+    #  path('password-reset/confirm/(?P<uidb64>[-\w]+)/(?P<token>[-\w]+)/$', 'django.contrib.auth.views.password_reset_confirm', name='password_reset_confirm'),
+    #  path('password-reset/complete/$', 'django.contrib.auth.views.password_reset_complete', name='password_reset_complete'),
 ]
-

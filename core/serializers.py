@@ -1,5 +1,7 @@
 from rest_framework import serializers
 from core.models import licenss,mg
+from order.models import Order
+from work.models import employees, posting
 
 
 class LizSerializer(serializers.ModelSerializer):
@@ -29,3 +31,24 @@ class mgSerializer(serializers.ModelSerializer):
     # def update(self,instance, validated_data):
     #     mg = super().update(instance, validated_data)
     #     return mg        
+
+class OrderSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = Order
+        fields = '__all__'
+  
+
+
+class EmployeesSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = employees
+        fields = "__all__"
+
+
+class postingSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = posting
+        fields = "__all__"

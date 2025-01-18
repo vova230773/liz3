@@ -1,0 +1,62 @@
+{% extends "base2.html" %}
+{% load static %}
+{% block css %}
+
+<style>
+    .con_img {
+        display: flex;
+        align-items: center;
+    }
+    
+
+    .con_img img {
+        max-width: 250px;
+        /* Ограничиваем размер картинки */
+        margin-right: 15px;
+        /* Расстояние между картинкой и текстом */
+    }
+
+    .con_img p {
+        font-size: 15px;
+      
+    }
+</style>
+{% endblock css %}
+{% block content %}
+
+<div class="container-fluid col-lg-12">
+    <h1>Останні новини</h1>
+    {% for article in news %}
+    <div class="row">
+        <div class="col-lg-1 ">
+        </div>
+
+        <div class="col-lg-4 pravoruch">
+            <li>
+                <h6 class="s5"><a class="s4"
+                        href="{% url 'core:news_detail' slug=article.slug %}">"{{ article.title }}"</a>
+                </h6>
+
+                <div class="con_img">
+                    <a href="{% url 'core:news_detail' slug=article.slug %}"><img src="{{ article.image.url }}"
+                            alt="{{ article.title }}" width="100"></a>
+                     <p id="content">{{ article.content|truncatewords:20 }}</p>
+
+                </div>
+           </li>
+            
+               
+            
+        </div>
+
+        <div class="col-lg-2 ">
+
+
+        </div>
+
+    </div>
+    {% endfor %}
+</div>
+<a href="{% url 'core:create_news' %}">Create New News</a>
+
+{% endblock content %}

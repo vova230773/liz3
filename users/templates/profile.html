@@ -1,24 +1,15 @@
+{% extends "base2.html" %}
 {% load static %}
-<html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{% static '/css/bootstrap/bootstrap.min.css' %}">
-    <link rel="stylesheet" href="{% static '/css/my_css.css' %}">
-    <link rel="apple-touch-icon" sizes="180x180" href="{% static '/icons/google.png' %}">
-    <link rel="icon" type="image/png" sizes="32x32" href="{% static '/icons/favicon-32x32.png' %}">
-    <link rel="icon" type="image/png" sizes="16x16" href="{% static '/icons/favicon-16x16.png' %}">
-    <link rel="manifest" href="{% static '/favicon/site.webmanifest' %}">
-    <title>Профіль</title>
-</head>
+{% block css %}
+<link rel="stylesheet" href="{% static '/css/bootstrap/bootstrap.min.css' %}">
+<link rel="stylesheet" href="{% static '/css/my_css.css' %}">
+
+{% endblock css %}
 
 <body>
-    
+     {% block content %}
     <section>
-        
-        <!-- Контент -->
         <div class="container">
             <div class="row mt-1">
                 <div class="col-lg-2">
@@ -40,11 +31,11 @@
                             <div class="col-md-12 mb-3 text-center">
                                 {% if user.image %}
                                     <img src="{{ user.image.url }}"
-                                        alt="Аватар користувача" class="img-fluid rounded-circle"
+                                        alt="Аватар користувача" class="img-fluid"
                                         style="max-width: 150px;">
                                 {% else %}
-                                    <img src="{% static "deps/images/baseavatar.jpg" %}"
-                                        alt="Аватар користувача" class="img-fluid rounded-circle"
+                                    <img src="{% static "/images/baseavatar.jpg" %}"
+                                        alt="Аватар користувача" class="img-fluid"
                                         style="max-width: 150px;">
                                 {% endif %}
                                 <input type="file" class="form-control mt-3" id="id_image"
@@ -53,9 +44,10 @@
                                     {% if form.image.errors %}
                                     <div class="alert alert-danger alert-dismissible fade show">{{form.image.errors}}</div>
                                     {% endif %}
+                                    
                             </div>
                             <div class="col-md-12 mb-3">
-                                <label for="id_first_name" class="form-label">Имя*</label>
+                                <label for="id_first_name" class="form-label">Ім'я*</label>
                                 <input type="text" class="form-control" id="id_first_name"
                                     name="first_name"
                                     placeholder="Ваше ім'я"
@@ -98,8 +90,19 @@
                                     <div class="alert alert-danger alert-dismissible fade show">{{form.email.errors}}</div>
                                     {% endif %}
                             </div>
+                             <div class="col-md-12 mb-3">
+                                 <label for="id_inn" class="form-label">ІПН*</label>
+                                 <input type="text" class="form-control" id="id_inn" name="inn"
+                                     placeholder="Введіть ваш іпн"
+                                     value="{{ form.inn.value }}" required>
+                                 {% if form.inn.errors %}
+                                 <div class="alert alert-danger alert-dismissible fade show">{{form.inn.errors}}</div>
+                                 {% endif %}
+                             </div>
                         </div>
                         <button type="submit" class="btn btn-dark">Зберегти</button>
+                         <a class="btn btn-dark" href="
+                                                {% url 'work:emp' %}">Вихід</a>
                     </form>
                 </div>
             </div>
@@ -111,10 +114,8 @@
             </div>
         </div>
     </section>
-    <script src="{% static '/js/jquery/jquery-3.7.0.min.js' %}"></script>
-    <script src="{% static "/js/jquery-events.js" %}"></script>
-    <script src="{% static '/js/jquery-ajax.js' %}"></script>
-    <script src="{% static '/js/bootstrap/bootstrap.bundle.min.js' %}"></script>
+     {% endblock content %}
+ 
 </body>
 
 </html>
