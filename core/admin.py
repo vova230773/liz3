@@ -69,11 +69,11 @@ class mgResource(resources.ModelResource):
 class mgAdmin(ImportExportModelAdmin):
     resource_classe=mgResource
     list_display = [
-        "okpo","mg","create_at","contragent",
+        "okpo","mg","create_at","contragent","ip_address",
      
     ]
     
-    search_fields = ["contragent"]
+    search_fields = ["okpo","mg","create_at","contragent","ip_address"]
     
 
 admin.site.register(mg,mgAdmin)

@@ -4,6 +4,10 @@ from django.forms import CharField, SlugField
 
 from users.models import User
 
+from django.utils.timezone import now
+from django.utils.text import slugify
+from tinymce.models import HTMLField
+
 
 
 class contrgrupp(models.Model):
@@ -65,6 +69,7 @@ class licenss(models.Model):
    # contragent=models.ForeignKey(Counterparts, on_delete=models.PROTECT, verbose_name='Контрагент')
     okpo=models.CharField(max_length=10, verbose_name='okpo')
     contragent = models.CharField(max_length=500, verbose_name='назва контрагента')
+    link = models.URLField(max_length=500, verbose_name="посилання на акт")
 
     class Meta:
         db_table = 'licenss'
@@ -76,6 +81,7 @@ class mg(models.Model):
     create_at = models.DateTimeField(blank=True,auto_now_add=True, verbose_name='Дата створення')
     okpo=models.CharField(max_length=10, verbose_name='okpo')
     contragent = models.CharField(max_length=500, verbose_name='назва контрагента')
+    ip_address = models.GenericIPAddressField(null=True, blank=True)
 
     class Meta:
         db_table = 'mg'
